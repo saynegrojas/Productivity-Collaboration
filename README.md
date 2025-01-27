@@ -77,6 +77,21 @@ For the frontend, I displayed task list and provided actions for completing and 
 As for the socket server, I created a server that listens for events from clients (e.g., `addTask`, `completeTask`, `deleteTask`) and broadcasts updates to all connected clients. I created a service for task for all the events to be utilized by the controller that handles task-related events from the client. 
 So, the event flow of the application is the client emits events to the socket server, then the server processes the event, updates the task list, and emits a task event with the updated list to all clients.Finally, clients listen for tasks events and update their UI accordingly.
 
+# Screenshots:
+
+## No task
+![No Task](./src/assets/no-task.png)
+## Delete task
+
+![Deleted task](./src/assets/dark-mode-remove-task.png)
+
+## Add task
+![Add task](./src/assets/add-task.png)
+
+## Completed task
+![Completed task](./src/assets/dark-mode-completed-task.png)
+
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
