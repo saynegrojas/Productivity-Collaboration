@@ -4,13 +4,13 @@ export const lightTheme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#673ab7', // Purple
+      main: '#5f7bb3',
+    },
+    secondary: {
+      main: '#06928d', // Pink
     },
     background: {
       default: '#f5f5f5',
-    },
-    secondary: {
-      main: '#f48fb1', // Pink
     },
   },
   typography: {
@@ -22,10 +22,10 @@ export const darkTheme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#90caf9', // Light Blue
+      main: '#446fc6', // Light Blue
     },
     secondary: {
-      main: '#f48fb1', // Pink
+      main: '#4c6de3', // Pink
     },
     background: {
       default: '#121212',

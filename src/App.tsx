@@ -1,53 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader } from '@mui/material';
-import { useSocket } from './context/SocketContext';
-import TaskInput from './components/TaskInput';
-import TaskTable from './components/TaskTable';
+import TaskInput from './components/task/TaskInput';
+import TaskTable from './components/task/TaskTable';
 import RootLayout from './layout/Layout';
-import ThemeToggle from './theme/theme-toggle';
-import TaskList from './components/TaskList';
-
-interface Task {
-  id: string;
-  text: string;
-  completed: boolean;
-}
+import ThemeToggle from './theme/ThemeToggle';
+import { Task } from './interfaces/task';
+import { useTaskSocket } from './hooks/useTaskSocket';
+import { useTaskActions } from './hooks/useTaskActions';
 
 const App: React.FC = () => {
-  const socket = useSocket();
-  const [tasks, setTasks] = useState<Task[]>([]);
   const [newTask, setNewTask] = useState('');
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleThemeChange = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+  const { tasks, socket } = useTaskSocket();
+  const { addTask, completeTask, deleteTask } = useTaskActions(socket);
 
-  useEffect(() => {
-    // Listen for updates from the server
-    socket.on('tasks', (updatedTasks: Task[]) => {
-      setTasks(updatedTasks);
-    });
+  const handleThemeChange = () => setIsDarkMode(!isDarkMode);
 
-    return () => {
-      socket.off('tasks');
-    };
-  }, []);
-
-  const addTask = () => {
+  const handleAddTask = () => {
+    setLoading(true);
     if (newTask.trim()) {
       const task: Task = { id: Date.now().toString(), text: newTask, completed: false };
-      socket.emit('addTask', task);
+      addTask(task);
       setNewTask('');
+      setLoading(false);
     }
-  };
-
-  const completeTask = (id: string) => {
-    socket.emit('completeTask', id);
-  };
-
-  const deleteTask = (id: string) => {
-    socket.emit('deleteTask', id);
   };
 
   return (
@@ -57,11 +35,16 @@ const App: React.FC = () => {
           title='Productivity and Collaboration'
           subheader='Real-Time Task Collaboration'
           action={<ThemeToggle isDarkMode={isDarkMode} handleThemeChange={handleThemeChange} />}
-          className='bg-slate-600 text-slate-200'
+          style={{ backgroundColor: '#475569', color: '#e2e8f0' }}
         />
         <CardContent>
-          <TaskInput newTask={newTask} setNewTask={setNewTask} addTask={addTask} />
-          <TaskTable tasks={tasks} completeTask={completeTask} deleteTask={deleteTask} />
+          <TaskInput newTask={newTask} setNewTask={setNewTask} handleAddTask={handleAddTask} />
+          <TaskTable
+            loading={loading}
+            tasks={tasks}
+            completeTask={completeTask}
+            deleteTask={deleteTask}
+          />
         </CardContent>
       </Card>
     </RootLayout>

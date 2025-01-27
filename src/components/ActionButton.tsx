@@ -8,6 +8,7 @@ interface ActionButtonProps {
   completed?: boolean;
   btnColor: btnColor;
 }
+
 const ActionButton = ({
   label,
   taskId,
@@ -29,6 +30,13 @@ const ActionButton = ({
   </Button>
 );
 
+/**
+ * Determines the background color for an ActionButton component based on the button color and completion status.
+ *
+ * @param btnColor - The color of the button, either 'success' or 'error'.
+ * @param completed - A boolean indicating whether the task associated with the button is completed.
+ * @returns The background color for the button, or an empty string if the task is completed.
+ */
 const getButtonColor = (btnColor: string, completed: boolean) => {
   if (!completed) {
     return btnColor === 'success' ? '#10ca8c' : '#cb3618';

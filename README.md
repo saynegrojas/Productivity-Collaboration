@@ -20,7 +20,7 @@ A simple application that enables users to manage tasks in real time.
 1. Clone the repository:
 
 ````bash
-git clone https://github.com/yourusername/productivity-collaboration.git
+git clone https://github.com/saynegrojas/productivity-collaboration.git
 
 Copy
 
@@ -42,7 +42,7 @@ README.md
 
 4. Start the application:
 ```bash
-npm run dev
+node server.js
 
 Copy
 
@@ -51,8 +51,8 @@ Apply
 README.md
 ## Usage
 
-1. Add a new task
-2. Complete or delete a task
+1. Type a task in the input field and add a new task
+2. Once a task is added, either complete or delete a task
 3. Open new tab and see new task display on both tabs
 4. Start collaborating in real-time
 

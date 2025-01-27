@@ -1,10 +1,11 @@
 import { Button, Tooltip } from '@mui/material';
-import { MoonIcon, SunIcon } from 'lucide-react';
+import ThemeIcon from './ThemeIcon';
 
-type ThemeToggleProps = {
+interface ThemeToggleProps {
   isDarkMode: boolean;
   handleThemeChange: () => void;
-};
+}
+
 const ThemeToggle = ({ isDarkMode, handleThemeChange }: ThemeToggleProps) => (
   <div>
     <Tooltip title={isDarkMode ? 'Light theme' : 'Dark theme'}>
@@ -14,11 +15,7 @@ const ThemeToggle = ({ isDarkMode, handleThemeChange }: ThemeToggleProps) => (
         className='rounded-lg text-slate-200'
         onClick={handleThemeChange}
       >
-        {isDarkMode ? (
-          <SunIcon size={16} className='absolute transition-all' />
-        ) : (
-          <MoonIcon size={16} className='rotate-0' />
-        )}
+        <ThemeIcon isDarkMode={isDarkMode} />
       </Button>
     </Tooltip>
   </div>
