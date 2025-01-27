@@ -90,6 +90,8 @@ So, the event flow of the application is the client emits events to the socket s
 
 ## Completed task
 ![Completed task](src/assets/dark-mode-completed-task.png)
+![Completed task](https://raw.githubusercontent.com/saynegrojas/repo/main/src/assets/dark-mode-completed-task.png)
+
 
 
 ## License
