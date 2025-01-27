@@ -86,7 +86,7 @@ So, the event flow of the application is the client emits events to the socket s
 ![Deleted task](src/assets/dark-mode-remove-task.png)
 
 ## Add task
-![Add task](src/assets/add-task.png)
+![Add task](/src/assets/add-task.png)
 
 ## Completed task
 ![Completed task](src/assets/dark-mode-completed-task.png)
