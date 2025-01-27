@@ -80,16 +80,16 @@ So, the event flow of the application is the client emits events to the socket s
 # Screenshots:
 
 ## No task
-![No Task](./src/assets/no-task.png)
+![No Task](src/assets/no-task.png)
 ## Delete task
 
-![Deleted task](./src/assets/dark-mode-remove-task.png)
+![Deleted task](src/assets/dark-mode-remove-task.png)
 
 ## Add task
-![Add task](./src/assets/add-task.png)
+![Add task](src/assets/add-task.png)
 
 ## Completed task
-![Completed task](./src/assets/dark-mode-completed-task.png)
+![Completed task](src/assets/dark-mode-completed-task.png)
 
 
 ## License
